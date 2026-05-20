@@ -3,7 +3,7 @@
 import csv
 from openpyxl import load_workbook
 
-MONITOR_FILE = "fle_monitors.txt"     # change to file_monitor.txt if needed
+MONITOR_FILE = "file_monitors.txt"     # change to file_monitor.txt if needed
 EXCEL_FILE = "Varun_list.xlsx"
 OUTPUT_FILE = "matched_monitors.csv"
 
