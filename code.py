@@ -1,6 +1,6 @@
 import csv
 
-MONITOR_FILE = "fle_monitors.txt"
+MONITOR_FILE = "file_monitors.txt"
 CSV_FILE = "Varun_list.csv"   # convert your xlsx to csv first
 OUTPUT_FILE = "matched_monitors.csv"
 
