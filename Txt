@@ -1,0 +1,8 @@
+could you do a favor and for each outstanding filemonitor, similar to what matt asked for can you send me a list of:
+ 
+<monitor>,   <application name>,    <assignment group name>
+ 
+CSV format or something like that
+ 
+if you don't have application name and assignment group name then just indicate that
+ 
