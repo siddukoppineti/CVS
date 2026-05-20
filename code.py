@@ -1,55 +1,44 @@
-#!/usr/bin/env python3
-
 import csv
-from openpyxl import load_workbook
 
-MONITOR_FILE = "file_monitors.txt"     # change to file_monitor.txt if needed
-EXCEL_FILE = "Varun_list.xlsx"
+MONITOR_FILE = "fle_monitors.txt"
+CSV_FILE = "Varun_list.csv"   # convert your xlsx to csv first
 OUTPUT_FILE = "matched_monitors.csv"
 
-def clean(value):
-    if value is None:
-        return ""
-    return str(value).strip()
+def clean(v):
+    return "" if v is None else str(v).strip()
 
-def normalize(value):
-    return clean(value).lower()
+def norm(v):
+    return clean(v).lower()
 
-def short_name(hostname):
-    hostname = clean(hostname)
-    return hostname.split(".", 1)[0].lower()
+def short_name(v):
+    v = clean(v)
+    return v.split(".", 1)[0].lower()
 
 def find_col(headers, candidates):
-    header_map = {normalize(h): i for i, h in enumerate(headers)}
+    header_map = {norm(h): i for i, h in enumerate(headers)}
     for c in candidates:
-        c = normalize(c)
-        if c in header_map:
-            return header_map[c]
+        key = norm(c)
+        if key in header_map:
+            return header_map[key]
     return None
 
-# Read monitor/server names
 with open(MONITOR_FILE, "r", encoding="utf-8") as f:
     servers = [line.strip() for line in f if line.strip()]
 
-# Load Excel workbook
-wb = load_workbook(EXCEL_FILE, read_only=True, data_only=True)
-ws = wb.active
+with open(CSV_FILE, "r", encoding="utf-8-sig", newline="") as f:
+    reader = csv.reader(f)
+    rows = list(reader)
 
-rows = list(ws.iter_rows(values_only=True))
 if not rows:
-    raise SystemExit("Excel file is empty")
+    raise SystemExit("CSV file is empty")
 
-headers = list(rows[0])
+headers = rows[0]
 
 name_idx = find_col(headers, ["Name"])
 fqdn_idx = find_col(headers, ["Fully qualified domain name", "FQDN", "Fully Qualified Domain Name"])
 app_idx = find_col(headers, ["Application Relationship"])
 group_idx = find_col(headers, ["Support Group", "Assignment Group"])
 
-if name_idx is None and fqdn_idx is None:
-    raise SystemExit("Could not find Name or Fully qualified domain name column in Excel file")
-
-# Build lookup
 lookup = {}
 
 for row in rows[1:]:
@@ -62,33 +51,27 @@ for row in rows[1:]:
     group_val = clean(row[group_idx]) if group_idx is not None and group_idx < len(row) else ""
 
     if name_val:
-        lookup[normalize(name_val)] = (app_val, group_val)
+        lookup[norm(name_val)] = (app_val, group_val)
     if fqdn_val:
-        lookup[normalize(fqdn_val)] = (app_val, group_val)
+        lookup[norm(fqdn_val)] = (app_val, group_val)
         lookup[short_name(fqdn_val)] = (app_val, group_val)
 
-# Write output
-with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as f:
+with open(OUTPUT_FILE, "w", encoding="utf-8", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["monitor", "server_name", "application_name", "assignment_group"])
 
     for server in servers:
-        key = normalize(server)
-        app = ""
-        group = ""
+        app = "MISSING"
+        group = "MISSING"
 
+        key = norm(server)
         if key in lookup:
             app, group = lookup[key]
         else:
-            sn = short_name(server)
-            if sn in lookup:
-                app, group = lookup[sn]
+            sname = short_name(server)
+            if sname in lookup:
+                app, group = lookup[sname]
 
-        writer.writerow([
-            "file monitor",
-            server,
-            app if app else "MISSING",
-            group if group else "MISSING"
-        ])
+        writer.writerow(["file monitor", server, app or "MISSING", group or "MISSING"])
 
 print(f"Created {OUTPUT_FILE}")
