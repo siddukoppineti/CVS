@@ -1,88 +1,49 @@
-$ ls
-eaz1obmapw205v  eaz1obmapw208v  eaz1obmapw221v  eri2obmapw203v  eri2obmapw205v  eri2obmapw219v
-$ ls -l
-total 8
-drwx------. 2 s011356 users   40 Jan 22 13:15 eaz1obmapw205v
-drwx------. 2 s011356 users   94 Jan 22 13:15 eaz1obmapw208v
-drwx------. 2 s011356 users 4096 Jan 22 13:15 eaz1obmapw221v
-drwx------. 2 s011356 users   52 Jan 22 13:15 eri2obmapw203v
-drwx------. 2 s011356 users 4096 Jan 22 13:15 eri2obmapw205v
-drwx------. 2 s011356 users   29 Jan 22 13:15 eri2obmapw219v
-$ clear
-$
-$
-$
-$
-$ ls -la -r *
-eri2obmapw219v:
-total 8
--rw-------. 1 s011356 users   74 Jan 22 13:15 rri1tpmsra1.json
-drwx------. 8 s011356 users 4096 Jan 22 13:24 ..
-drwx------. 2 s011356 users   29 Jan 22 13:15 .
+$ vi code.py
+$ /usr/bin/chmod +x code.py
+$ python3 code.py
+Found 30 JSON files:
 
-eri2obmapw205v:
-total 84
--rw-------. 1 s011356 users  206 Jan 22 13:15 rri2atgsap2l1b.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  206 Jan 22 13:15 rri2atgsap2l1a.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl17v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl16v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl15v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl14v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl13v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl12v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl11v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 rri1rxdupl10v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  257 Jan 22 13:15 ibmretpw1.json
--rw-------. 1 s011356 users   71 Jan 22 13:15 eri2durapl17v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users   71 Jan 22 13:15 eri2durapl16v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users   71 Jan 22 13:15 eri2durapl15v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users   71 Jan 22 13:15 eri2durapl14v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users   71 Jan 22 13:15 eri2durapl13v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users   71 Jan 22 13:15 eri2durapl12v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  119 Jan 22 13:15 eri2durapl11v.corp.cvscaremark.com.json
--rw-------. 1 s011356 users  407 Jan 22 13:15 eri2durapl10v.corp.cvscaremark.com.json
-drwx------. 8 s011356 users 4096 Jan 22 13:24 ..
-drwx------. 2 s011356 users 4096 Jan 22 13:15 .
+--------------------------------------------------------------------------------
+Name                                File System Path
+--------------------------------------------------------------------------------
+prdudb2.caremarkrx.net              PATH_NOT_FOUND
+raz1tpmspa1.corp.cvscaremark.com    PATH_NOT_FOUND
+raz1tpmspa2.corp.cvscaremark.com    PATH_NOT_FOUND
+prdspa1a.caremarkrx.net             PATH_NOT_FOUND
+prdxws2a.caremarkrx.net             PATH_NOT_FOUND
+prdxws2l.caremarkrx.net             PATH_NOT_FOUND
+prdxws2c.caremarkrx.net             PATH_NOT_FOUND
+prdxws2m.caremarkrx.net             PATH_NOT_FOUND
+rri1tpmspa1                         PATH_NOT_FOUND
+rri1tpmspa2                         PATH_NOT_FOUND
+rri1rxdupl13v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl14v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl11v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl12v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl10v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl17v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl15v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri1rxdupl16v.corp.cvscaremark.com  PATH_NOT_FOUND
+rri2atgsap2l1a.corp.cvscaremark.com PATH_NOT_FOUND
+rri2atgsap2l1b.corp.cvscaremark.com PATH_NOT_FOUND
+eri2durapl17v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl16v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl11v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl10v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl15v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl14v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl13v.corp.cvscaremark.com  PATH_NOT_FOUND
+eri2durapl12v.corp.cvscaremark.com  PATH_NOT_FOUND
+ibmretpw1                           PATH_NOT_FOUND
+rri1tpmsra1                         PATH_NOT_FOUND
+--------------------------------------------------------------------------------
 
-eri2obmapw203v:
-total 12
--rw-------. 1 s011356 users   73 Jan 22 13:15 rri1tpmspa2.json
--rw-------. 1 s011356 users   73 Jan 22 13:15 rri1tpmspa1.json
-drwx------. 8 s011356 users 4096 Jan 22 13:24 ..
-drwx------. 2 s011356 users   52 Jan 22 13:15 .
-
-eaz1obmapw221v:
-total 28
--rw-------. 1 s011356 users   70 Jan 22 13:15 prdxws2m.caremarkrx.net.json
--rw-------. 1 s011356 users  117 Jan 22 13:15 prdxws2l.caremarkrx.net.json
--rw-------. 1 s011356 users   68 Jan 22 13:15 prdxws2c.caremarkrx.net.json
--rw-------. 1 s011356 users   78 Jan 22 13:15 prdxws2a.caremarkrx.net.json
--rw-------. 1 s011356 users  288 Jan 22 13:15 prdspa1a.caremarkrx.net.json
-drwx------. 8 s011356 users 4096 Jan 22 13:24 ..
-drwx------. 2 s011356 users 4096 Jan 22 13:15 .
-
-eaz1obmapw208v:
-total 12
--rw-------. 1 s011356 users   73 Jan 22 13:15 raz1tpmspa2.corp.cvscaremark.com.json
--rw-------. 1 s011356 users   73 Jan 22 13:15 raz1tpmspa1.corp.cvscaremark.com.json
-drwx------. 8 s011356 users 4096 Jan 22 13:24 ..
-drwx------. 2 s011356 users   94 Jan 22 13:15 .
-
-eaz1obmapw205v:
-total 8
--rw-------. 1 s011356 users   75 Jan 22 13:15 prdudb2.caremarkrx.net.json
-drwx------. 8 s011356 users 4096 Jan 22 13:24 ..
-drwx------. 2 s011356 users   40 Jan 22 13:15 .
-$ pwd
-/users/s011356/sitescope/configs/FileMonitors/files/files
-$
-
-
-
-
-
-
-Server Name	OS Type	Env	Path of file system	File system exists on sever or shared location?	Read and Execute Permission can be permissible to machine Agent user?(Yes/No)
-					
-					
-
+CSV saved to: json_filesystem_paths.csv
+$ cat eaz1obmapw205
+1) eaz1obmapw205v/
+$ cat eaz1obmapw205v/prdudb2.caremarkrx.net.json
+{
+  "filenames": [
+    "/appl/portal/jobs/fdms/data/tuftstrigger.txt"
+  ]
+}$
