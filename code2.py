@@ -1,6 +1,6 @@
 import os
 import json
-from pathlib import Path
+import csv
 
 # Current directory based on pwd output
 base_dir = "/users/s011356/sitescope/configs/FileMonitors/files/files"
@@ -27,11 +27,17 @@ def extract_json_info(directory):
                     with open(json_path, 'r') as f:
                         data = json.load(f)
                     
-                    # Try common keys for file system path
                     file_path = None
                     
-                    # Check various possible keys
-                    if 'path' in data:
+                    # Check for 'filenames' array (primary key based on your JSON)
+                    if 'filenames' in data and isinstance(data['filenames'], list):
+                        # Get first path from the array, or join all if multiple
+                        if len(data['filenames']) > 0:
+                            file_path = data['filenames'][0]  # First path
+                            # If you want all paths, use: file_path = ", ".join(data['filenames'])
+                    
+                    # Fallback: check other common keys
+                    elif 'path' in data:
                         file_path = data['path']
                     elif 'filePath' in data:
                         file_path = data['filePath']
@@ -39,18 +45,14 @@ def extract_json_info(directory):
                         file_path = data['fileSystemPath']
                     elif 'monitorPath' in data:
                         file_path = data['monitorPath']
-                    elif 'fileName' in data:
-                        file_path = data['fileName']
                     else:
-                        # Debug: show all keys
-                        file_path = data.get('path', data.get('filePath', 'PATH_NOT_FOUND'))
+                        file_path = 'PATH_NOT_FOUND'
                     
                     results.append({
                         'json_file': file,
                         'name': name_without_ext,
                         'full_path': json_path,
-                        'file_system_path': file_path,
-                        'all_keys': list(data.keys()) if file_path == 'PATH_NOT_FOUND' else None
+                        'file_system_path': file_path
                     })
                     
                 except json.JSONDecodeError as e:
@@ -58,16 +60,14 @@ def extract_json_info(directory):
                         'json_file': file,
                         'name': name_without_ext,
                         'full_path': json_path,
-                        'file_system_path': f'JSON_ERROR: {e}',
-                        'all_keys': None
+                        'file_system_path': f'JSON_ERROR: {e}'
                     })
                 except Exception as e:
                     results.append({
                         'json_file': file,
                         'name': name_without_ext,
                         'full_path': json_path,
-                        'file_system_path': f'ERROR: {e}',
-                        'all_keys': None
+                        'file_system_path': f'ERROR: {e}'
                     })
     
     return results
@@ -77,21 +77,21 @@ results = extract_json_info(base_dir)
 
 # Print results in a readable format
 print(f"Found {len(results)} JSON files:\n")
-print("-" * 80)
-print(f"{'Name':<35} {'File System Path':<45}")
-print("-" * 80)
+print("-" * 100)
+print(f"{'Name':<45} {'File System Path':<55}")
+print("-" * 100)
 
 for r in results:
     name = r['name']
     path = r['file_system_path']
-    if len(path) > 42:
-        path = path[:39] + "..."
-    print(f"{name:<35} {path:<45}")
+    # Truncate path if too long
+    if len(path) > 52:
+        path = path[:49] + "..."
+    print(f"{name:<45} {path:<55}")
 
-print("-" * 80)
+print("-" * 100)
 
 # Save as CSV for easier viewing
-import csv
 csv_path = "json_filesystem_paths.csv"
 
 with open(csv_path, 'w', newline='') as csvfile:
